@@ -725,13 +725,13 @@
     </message>
     <message>
         <location filename="../geom2field.py" line="130"/>
-        <source>DÂ°M'S&quot;</source>
-        <translation type="obsolete">D°M'S&quot;</translation>
+        <source>DÂ°M&apos;S&quot;</source>
+        <translation type="obsolete">D°M&apos;S&quot;</translation>
     </message>
     <message>
         <location filename="../geom2field.py" line="130"/>
-        <source>DÂ°M.MM'</source>
-        <translation type="obsolete">D°M.MM'</translation>
+        <source>DÂ°M.MM&apos;</source>
+        <translation type="obsolete">D°M.MM&apos;</translation>
     </message>
     <message>
         <location filename="../geom2field.py" line="130"/>
@@ -740,12 +740,12 @@
     </message>
     <message>
         <location filename="../geom2field.py" line="138"/>
-        <source>Add space between DÂ° M' S&quot; and DÂ° M.MM' numbers</source>
+        <source>Add space between DÂ° M&apos; S&quot; and DÂ° M.MM&apos; numbers</source>
         <translation type="obsolete">在度分秒数字间添加空格</translation>
     </message>
     <message>
         <location filename="../geom2field.py" line="145"/>
-        <source>Pad DÂ°M'S&quot; and DÂ°M.MM' coordinates with leading zeros</source>
+        <source>Pad DÂ°M&apos;S&quot; and DÂ°M.MM&apos; coordinates with leading zeros</source>
         <translation type="obsolete">度分秒坐标添加前导零</translation>
     </message>
     <message>
@@ -981,67 +981,67 @@
     <message>
         <location filename="../latLonTools.py" line="168"/>
         <source>Geometry to WKT/JSON</source>
-        <translation type="unfinished"></translation>
+        <translation>几何图形转 WKT/JSON</translation>
     </message>
     <message>
         <location filename="../geom2wkt.py" line="86"/>
         <source>Output format type</source>
-        <translation type="unfinished"></translation>
+        <translation>输出格式</translation>
     </message>
     <message>
         <location filename="../wkt2layers.py" line="197"/>
         <source>WKT attribute to layers</source>
-        <translation type="unfinished"></translation>
+        <translation>WKT 属性转图层</translation>
     </message>
     <message>
         <location filename="../wkt2layers.py" line="50"/>
         <source>Select a WKT coordinate field</source>
-        <translation type="unfinished"></translation>
+        <translation>选择包含 WKT 坐标的字段</translation>
     </message>
     <message>
         <location filename="../wkt2layers.py" line="58"/>
         <source>WKT CRS (Usually EPSG:4326)</source>
-        <translation type="unfinished"></translation>
+        <translation>WKT 坐标系 (通常为 EPSG:4326)</translation>
     </message>
     <message>
         <location filename="../wkt2layers.py" line="65"/>
         <source>Output point layer</source>
-        <translation type="unfinished"></translation>
+        <translation>输出点图层</translation>
     </message>
     <message>
         <location filename="../wkt2layers.py" line="71"/>
         <source>Output line layer</source>
-        <translation type="unfinished"></translation>
+        <translation>输出线图层</translation>
     </message>
     <message>
         <location filename="../wkt2layers.py" line="77"/>
         <source>Output polygon layer</source>
-        <translation type="unfinished"></translation>
+        <translation>输出多边形图层</translation>
     </message>
     <message>
         <location filename="../wkt2layers.py" line="89"/>
         <source>A String attribute field needs to be selected</source>
-        <translation type="unfinished"></translation>
+        <translation>需要选择一个字符串属性字段</translation>
     </message>
     <message>
         <location filename="../geom2field.py" line="130"/>
-        <source>D°M'S&quot;</source>
-        <translation type="unfinished"></translation>
+        <source>D°M&apos;S&quot;</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../geom2field.py" line="130"/>
-        <source>D°M.MM'</source>
-        <translation type="unfinished"></translation>
+        <source>D°M.MM&apos;</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../geom2field.py" line="138"/>
-        <source>Add space between D° M' S&quot; and D° M.MM' numbers</source>
-        <translation type="unfinished"></translation>
+        <source>Add space between D° M&apos; S&quot; and D° M.MM&apos; numbers</source>
+        <translation>在度分秒数字间添加空格</translation>
     </message>
     <message>
         <location filename="../geom2field.py" line="145"/>
-        <source>Pad D°M'S&quot; and D°M.MM' coordinates with leading zeros</source>
-        <translation type="unfinished"></translation>
+        <source>Pad D°M&apos;S&quot; and D°M.MM&apos; coordinates with leading zeros</source>
+        <translation>度分秒坐标添加前导零</translation>
     </message>
 </context>
 <context>
