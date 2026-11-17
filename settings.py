@@ -66,7 +66,7 @@ class Settings():
         qset = QgsSettings()
 
         # CAPTURE SETTINGS
-        self.captureShowLocation = qset.value('/LatLonTools4/CaptureShowClickedLocation', Qt.CheckState.Unchecked)
+        self.captureShowLocation = bool(qset.value('/LatLonTools4/CaptureShowClickedLocation', False))
         self.captureCustomCrsAuthId = qset.value('/LatLonTools4/CaptureCustomCrsId', 'EPSG:4326')
         self.captureGeohashPrecision = int(qset.value('/LatLonTools4/CaptureGeohashPrecision', 12))
         self.captureDmmPrecision = int(qset.value('/LatLonTools4/CaptureDmmPrecision', 4))
@@ -74,11 +74,11 @@ class Settings():
         self.captureUtmFormat = int(qset.value('/LatLonTools4/CaptureUtmFormat', 0))
         self.captureUpsPrecision = int(qset.value('/LatLonTools4/CaptureUpsPrecision', 0))
         self.captureUpsFormat = int(qset.value('/LatLonTools4/CaptureUpsFormat', 0))
-        self.captureAddDmsSpace = qset.value('/LatLonTools4/CaptureAddDmsSpace', Qt.CheckState.Checked)
-        self.capturePadZeroes = qset.value('/LatLonTools4/CapturePadZeroes', Qt.CheckState.Unchecked)
+        self.captureAddDmsSpace = bool(qset.value('/LatLonTools4/CaptureAddDmsSpace', True))
+        self.capturePadZeroes = bool(qset.value('/LatLonTools4/CapturePadZeroes', False))
         self.captureMaidenheadPrecision = int(qset.value('/LatLonTools4/CaptureMaidenheadPrecision', 3))
         self.captureGeorefPrecision = int(qset.value('/LatLonTools4/CaptureGeorefPrecision', 5))
-        self.captureMgrsAddSpacesCheckBox = qset.value('/LatLonTools4/CaptureMgrsAddSpaces', Qt.CheckState.Unchecked)
+        self.captureMgrsAddSpacesCheckBox = bool(qset.value('/LatLonTools4/CaptureMgrsAddSpaces', False))
         self.captureMgrsPrec = int(qset.value('/LatLonTools4/CaptureMgrsPrecision', 5))
         if H3_INSTALLED:
             self.captureH3Precision = int(qset.value('/LatLonTools4/CaptureH3Precision', 8))
@@ -99,11 +99,11 @@ class Settings():
         self.gridColor.setAlpha(value)
 
         # EXTERNAL MAP
-        self.showPlacemark = qset.value('/LatLonTools4/ShowPlacemark', Qt.CheckState.Checked)
+        self.showPlacemark = bool(qset.value('/LatLonTools4/ShowPlacemark', True))
         self.mapProvider = int(qset.value('/LatLonTools4/MapProvider', 0))
         self.mapProviderRight = int(qset.value('/LatLonTools4/MapProviderRight', 0))
         self.mapZoom = int(qset.value('/LatLonTools4/MapZoom', 13))
-        self.externalMapShowLocation = qset.value('/LatLonTools4/ExternMapShowClickedLocation', Qt.CheckState.Unchecked)
+        self.externalMapShowLocation = bool(qset.value('/LatLonTools4/ExternMapShowClickedLocation', False))
         self.userMapProviders = qset.value('/LatLonTools4/UserMapProviders', 0)
         if not isinstance(self.userMapProviders, list):
             self.userMapProviders = []
@@ -136,10 +136,10 @@ class Settings():
         self.converterGeorefPrecision = int(qset.value('/LatLonTools4/ConverterGeorefPrecision', 5))
         self.converterDelimiter = qset.value('/LatLonTools4/ConverterDelimiter', ', ')
         self.converterDdmmssDelimiter = qset.value('/LatLonTools4/ConverterDdmmssDelimiter', ', ')
-        self.converterAddDmsSpace = qset.value('/LatLonTools4/ConverterAddDmsSpace', Qt.CheckState.Checked)
-        self.converterPadZeroes = qset.value('/LatLonTools4/ConverterPadZeroes', Qt.CheckState.Unchecked)
-        self.converterNsewBeginning = qset.value('/LatLonTools4/ConverterNsewBeginning', Qt.CheckState.Unchecked)
-        self.converterMgrsAddSpacesCheckBox = qset.value('/LatLonTools4/ConverterMgrsAddSpaces', Qt.CheckState.Unchecked)
+        self.converterAddDmsSpace = bool(qset.value('/LatLonTools4/ConverterAddDmsSpace', True))
+        self.converterPadZeroes = bool(qset.value('/LatLonTools4/ConverterPadZeroes', False))
+        self.converterNsewBeginning = bool(qset.value('/LatLonTools4/ConverterNsewBeginning', False))
+        self.converterMgrsAddSpacesCheckBox = bool(qset.value('/LatLonTools4/ConverterMgrsAddSpaces', False))
         self.converterMgrsPrec = int(qset.value('/LatLonTools4/ConverterMgrsPrecision', 5))
 
     def mapProviderNames(self):
@@ -417,8 +417,8 @@ class SettingsWidget(QDialog, FORM_CLASS):
         self.zoomToProjection = int(qset.value('/LatLonTools4/ZoomToCoordType', 0))
         if not H3_INSTALLED and self.zoomToProjection == self.ZoomProjectionTypeH3:
             self.zoomToProjection = 0
-        self.persistentMarker = qset.value('/LatLonTools4/PersistentMarker', Qt.CheckState.Checked)
-        self.showGrid = qset.value('/LatLonTools4/ShowGrid', Qt.CheckState.Checked)
+        self.persistentMarker = bool(qset.value('/LatLonTools4/PersistentMarker', True))
+        self.showGrid = bool(qset.value('/LatLonTools4/ShowGrid', True))
         self.zoomToCustomCrsAuthId = qset.value('/LatLonTools4/ZoomToCustomCrsId', 'EPSG:4326')
         self.zoomToProjectionSelectionWidget.setCrs(QgsCoordinateReferenceSystem(self.zoomToCustomCrsAuthId))
 
@@ -687,10 +687,10 @@ class SettingsWidget(QDialog, FORM_CLASS):
         self.captureGeorefPrecisionSpinBox.setValue(settings.captureGeorefPrecision)
         self.capturePrefixLineEdit.setText(self.capturePrefix)
         self.captureSuffixLineEdit.setText(self.captureSuffix)
-        self.captureMarkerCheckBox.setCheckState(settings.captureShowLocation)
-        self.captureAddDmsSpaceCheckBox.setCheckState(settings.captureAddDmsSpace)
-        self.capturePadZeroesCheckBox.setCheckState(settings.capturePadZeroes)
-        self.captureMgrsAddSpacesCheckBox.setCheckState(settings.captureMgrsAddSpacesCheckBox)
+        self.captureMarkerCheckBox.setChecked(settings.captureShowLocation)
+        self.captureAddDmsSpaceCheckBox.setChecked(settings.captureAddDmsSpace)
+        self.capturePadZeroesCheckBox.setChecked(settings.capturePadZeroes)
+        self.captureMgrsAddSpacesCheckBox.setChecked(settings.captureMgrsAddSpacesCheckBox)
         self.captureMgrsPrecisionSpinBox.setValue(settings.captureMgrsPrec)
 
         # ZOOM TO SETTINGS
@@ -700,8 +700,8 @@ class SettingsWidget(QDialog, FORM_CLASS):
         else:
             self.zoomToProjectionSelectionWidget.setCrs(QgsCoordinateReferenceSystem(self.zoomToCustomCrsAuthId))
         self.zoomToCoordOrderComboBox.setCurrentIndex(self.zoomToCoordOrder)
-        self.persistentMarkerCheckBox.setCheckState(self.persistentMarker)
-        self.showGridCheckBox.setCheckState(self.showGrid)
+        self.persistentMarkerCheckBox.setChecked(self.persistentMarker)
+        self.showGridCheckBox.setChecked(self.showGrid)
         self.markerSizeSpinBox.setValue(settings.markerSize)
         self.markerWidthSpinBox.setValue(settings.markerWidth)
         self.gridWidthSpinBox.setValue(settings.gridWidth)
@@ -709,8 +709,8 @@ class SettingsWidget(QDialog, FORM_CLASS):
         self.gridColorButton.setColor(settings.gridColor)
 
         # EXTERNAL MAP
-        self.showPlacemarkCheckBox.setCheckState(settings.showPlacemark)
-        self.showLocationCheckBox.setCheckState(settings.externalMapShowLocation)
+        self.showPlacemarkCheckBox.setChecked(settings.showPlacemark)
+        self.showLocationCheckBox.setChecked(settings.externalMapShowLocation)
         self.zoomSpinBox.setValue(settings.mapZoom)
         # self.mapProviderComboBox.setCurrentIndex(settings.mapProvider)
         # self.mapProviderRComboBox.setCurrentIndex(settings.mapProviderRight)
@@ -765,10 +765,10 @@ class SettingsWidget(QDialog, FORM_CLASS):
         self.converterGeorefPrecisionSpinBox.setValue(settings.converterGeorefPrecision)
         self.converterDelimiterLineEdit.setText(settings.converterDelimiter)
         self.converterDdmmssDelimiterLineEdit.setText(settings.converterDdmmssDelimiter)
-        self.converterAddDmsSpaceCheckBox.setCheckState(settings.converterAddDmsSpace)
-        self.converterPadZeroesCheckBox.setCheckState(settings.converterPadZeroes)
-        self.converterNsewBeginningCheckBox.setCheckState(settings.converterNsewBeginning)
-        self.converterMgrsAddSpacesCheckBox.setCheckState(settings.converterMgrsAddSpacesCheckBox)
+        self.converterAddDmsSpaceCheckBox.setChecked(settings.converterAddDmsSpace)
+        self.converterPadZeroesCheckBox.setChecked(settings.converterPadZeroes)
+        self.converterNsewBeginningCheckBox.setChecked(settings.converterNsewBeginning)
+        self.converterMgrsAddSpacesCheckBox.setChecked(settings.converterMgrsAddSpacesCheckBox)
         self.converterMgrsPrecisionSpinBox.setValue(settings.converterMgrsPrec)
 
         self.setEnabled()

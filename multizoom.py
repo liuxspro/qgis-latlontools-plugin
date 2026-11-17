@@ -188,7 +188,7 @@ class MultiZoomWidget(QDockWidget, FORM_CLASS):
             self.resultsTable.blockSignals(False)
 
     def clearMarkers(self):
-        if self.showAllCheckBox.checkState():
+        if self.showAllCheckBox.isChecked():
             self.showAllCheckBox.setChecked(False)
         self.resultsTable.blockSignals(True)
         self.resultsTable.clearSelection()
@@ -201,7 +201,7 @@ class MultiZoomWidget(QDockWidget, FORM_CLASS):
     def updateDisplayedMarkers(self):
         rowcnt = self.resultsTable.rowCount()
 
-        if self.showAllCheckBox.checkState():
+        if self.showAllCheckBox.isChecked():
             for id in range(rowcnt):
                 item = self.resultsTable.item(id, 0).data(Qt.ItemDataRole.UserRole)
                 if item.marker is None:
